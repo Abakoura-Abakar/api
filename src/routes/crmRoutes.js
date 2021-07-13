@@ -1,3 +1,11 @@
+import { 
+  adNewContact,
+  getContact,
+  getContactWdthId,
+  updateContact,
+  deleteContact
+ } from '../controllers/crmControllers'
+
 const routes = (app)=>{
 
     app.route('/contact')
@@ -7,24 +15,24 @@ const routes = (app)=>{
           console.log(`la methode est ${req.method}`)
 
           next()
-      }, (req, res)=>{
-          res.send("Demande GET avec succès")
-      })
+      }, getContact)
       
 
-      .post((req, res)=>{
-        res.send("Demande POST avec succès")
-      })
+      .post(adNewContact)
 
 
       app.route('/contact/:contactId')
-      .put((req, res)=>{
-          res.send("Demande PUT avec succès")
-      })
+      // Recherche du contact avec son id
+      .get(getContactWdthId)
 
-      .delete((req, res)=>{
-        res.send("Demande DELETE avec succès")
-      })
+
+      // Mise a jour d'un conttact 
+      .put(updateContact)
+
+
+
+      //Supression d'un contact  
+      .delete(deleteContact)
 }
 
 
