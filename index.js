@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import routes from './src/routes/crmRoutes'
 
+
+//creation du serveur
 const app = express()
 const PORT = process.env.PORT || 4600
 
